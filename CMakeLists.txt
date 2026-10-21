@@ -25,6 +25,11 @@ project(pico_hid_bridge C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 20)
 
+# A system-wide picotool with a different version makes the SDK abort.
+# Build the version matching the SDK instead; pass -DPICOTOOL_FORCE_FETCH_FROM_GIT=OFF
+# to use an installed picotool.
+set(PICOTOOL_FORCE_FETCH_FROM_GIT ON CACHE BOOL "Always build the picotool matching the SDK")
+
 pico_sdk_init()
 
 # --- Pico-PIO-USB --------------------------------------------------------------
